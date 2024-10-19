@@ -18,6 +18,9 @@
 
     <properties>
         <java.version>17</java.version>
+        <!-- Ajout de l'encodage par défaut pour tout le projet -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>
@@ -90,22 +93,28 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- Configuration de l'encodage UTF-8 pour le plugin maven-resources -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.3.1</version>
                 <configuration>
-                    <encoding>UTF-8</encoding> <!-- Spécifie l'encodage -->
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
 
-            <!-- Plugin Surefire pour exécuter les tests -->
+            <!-- Plugin Surefire pour exécuter les tests avec encodage UTF-8 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
                     <testFailureIgnore>false</testFailureIgnore>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
+                    <systemPropertyVariables>
+                        <file.encoding>UTF-8</file.encoding>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>
