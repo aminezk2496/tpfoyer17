@@ -111,10 +111,7 @@
                 <version>2.22.2</version>
                 <configuration>
                     <testFailureIgnore>false</testFailureIgnore>
-                    <argLine>-Dfile.encoding=UTF-8</argLine>
-                    <systemPropertyVariables>
-                        <file.encoding>UTF-8</file.encoding>
-                    </systemPropertyVariables>
+                    <argLine>-Dfile.encoding=UTF-8</argLine> <!-- Encodage UTF-8 pour les tests -->
                 </configuration>
             </plugin>
         </plugins>
