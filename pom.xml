@@ -35,14 +35,14 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Spring Boot Starter Test -->
+        <!-- Spring Boot Starter Test (JUnit) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <!-- Mockito -->
+        <!-- Mockito for Unit Tests -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
@@ -61,14 +61,14 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- SpringDoc OpenAPI -->
+        <!-- SpringDoc OpenAPI for API Documentation -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.0.0</version>
         </dependency>
 
-        <!-- Lombok -->
+        <!-- Lombok to reduce boilerplate code -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -93,7 +93,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- JaCoCo for code coverage -->
+            <!-- JaCoCo for Code Coverage -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -112,6 +112,10 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <dataFile>${project.build.directory}/jacoco.exec</dataFile>
+                    <outputDirectory>${project.build.directory}/jacoco</outputDirectory>
+                </configuration>
             </plugin>
 
             <!-- Maven Resources Plugin -->
