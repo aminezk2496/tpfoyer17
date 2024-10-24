@@ -36,6 +36,11 @@
         </dependency>
 
         <!-- Dépendance pour MySQL Connector -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 
         <!-- SpringDoc OpenAPI pour la documentation API -->
         <dependency>
@@ -48,7 +53,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.24</version> <!-- Utilisez une version fixe -->
+            <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
 
@@ -71,7 +76,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.7.0</version> <!-- Remplacez RELEASE par une version fixe -->
+            <version>7.7.0</version> <!-- Version fixe au lieu de RELEASE -->
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -103,6 +108,13 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- Plugin SonarQube -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.9.0.2155</version> <!-- Version à vérifier -->
             </plugin>
 
             <!-- Configuration de l'encodage UTF-8 pour le plugin maven-resources -->
