@@ -19,6 +19,8 @@ public interface ChambreRepository extends CrudRepository<Chambre, Long> {
     List<Chambre> findByTypeChambreAndReservationsEstValide(TypeChambre typeChambre, boolean estvalide);
 
     List<Chambre> findByBlocFoyerUniversiteNomUniversiteLike(String nomUni);
+    Chambre findByReservationsIdReservation(String reservationsIdReservation);
+
 
     List<Chambre> findByBlocIdBlocAndTypeChambre(Long idBloc, TypeChambre typeChambre); // Added this method
 
