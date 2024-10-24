@@ -1,7 +1,7 @@
 package tn.esprit.tpfoyer17.services.impementations;
 
-import org.aspectj.lang.annotation.Before;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -11,6 +11,7 @@ import tn.esprit.tpfoyer17.entities.enumerations.TypeChambre;
 import tn.esprit.tpfoyer17.repositories.BlocRepository;
 import tn.esprit.tpfoyer17.repositories.ChambreRepository;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class ChambreServiceTest {
-
 
     @Mock
     private ChambreRepository chambreRepository;
@@ -30,28 +30,29 @@ public class ChambreServiceTest {
     @InjectMocks
     private ChambreService chambreService;
 
-    @Before("")
+    @BeforeEach
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
     public void retrieveAllChambres_ShouldReturnListOfChambres() {
         // Arrange
-        when(chambreRepository.findAll()).thenReturn(Collections.singletonList(new Chambre(/* provide necessary arguments */)));
+        List<Chambre> chambreList = Collections.singletonList(new Chambre());
+        when(chambreRepository.findAll()).thenReturn(chambreList);
 
         // Act
         List<Chambre> result = chambreService.retrieveAllChambres();
 
         // Assert
-        assertEquals(1, result.size());
+        assertEquals(chambreList.size(), result.size());
         verify(chambreRepository, times(1)).findAll();
     }
 
     @Test
     public void addChambre_ShouldReturnSavedChambre() {
         // Arrange
-        Chambre chambre = new Chambre(/* provide necessary arguments */);
+        Chambre chambre = new Chambre();
         when(chambreRepository.save(chambre)).thenReturn(chambre);
 
         // Act
@@ -65,7 +66,7 @@ public class ChambreServiceTest {
     @Test
     public void updateChambre_ShouldReturnUpdatedChambre() {
         // Arrange
-        Chambre chambre = new Chambre(/* provide necessary arguments */);
+        Chambre chambre = new Chambre();
         when(chambreRepository.save(chambre)).thenReturn(chambre);
 
         // Act
@@ -79,7 +80,7 @@ public class ChambreServiceTest {
     @Test
     public void retrieveChambre_ShouldReturnChambre() {
         // Arrange
-        Chambre chambre = new Chambre(/* provide necessary arguments */);
+        Chambre chambre = new Chambre();
         when(chambreRepository.findById(1L)).thenReturn(Optional.of(chambre));
 
         // Act
@@ -93,14 +94,15 @@ public class ChambreServiceTest {
     @Test
     public void affecterChambresABloc_ShouldAffectChambres() {
         // Arrange
-        Bloc bloc = new Bloc(/* provide necessary arguments */);
-        List<Long> numChambre = List.of(1L, 2L);
-        List<Chambre> chambreList = List.of(new Chambre(), new Chambre());
+        Bloc bloc = new Bloc();
+        List<Long> numChambres = Arrays.asList(1L, 2L);
+        List<Chambre> chambreList = Arrays.asList(new Chambre(), new Chambre());
+
         when(blocRepository.findById(1L)).thenReturn(Optional.of(bloc));
-        when(chambreRepository.findByNumeroChambreIn(numChambre)).thenReturn(chambreList);
+        when(chambreRepository.findByNumeroChambreIn(numChambres)).thenReturn(chambreList);
 
         // Act
-        Bloc result = chambreService.affecterChambresABloc(numChambre, 1L);
+        Bloc result = chambreService.affecterChambresABloc(numChambres, 1L);
 
         // Assert
         assertEquals(bloc, result);
