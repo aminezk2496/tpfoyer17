@@ -1,4 +1,4 @@
-package tn.esprit.tpfoyer17.services.impementations;
+package tn.esprit.tpfoyer17.services.implementations;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,11 +11,8 @@ import tn.esprit.tpfoyer17.entities.Universite;
 import tn.esprit.tpfoyer17.repositories.BlocRepository;
 import tn.esprit.tpfoyer17.repositories.FoyerRepository;
 import tn.esprit.tpfoyer17.repositories.UniversiteRepository;
-import tn.esprit.tpfoyer17.services.impementations.FoyerService;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.TreeSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
