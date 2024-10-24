@@ -55,7 +55,7 @@ public class ChambreService implements IChambreService {
         Bloc bloc = blocRepository.findById(idBloc).orElse(null);
         List<Chambre> chambreList = chambreRepository.findByNumeroChambreIn(numChambre);
 
-        for (Chambre chambre : chambreList) {
+        for(Chambre chambre: chambreList) {
             chambre.setBloc(bloc);
             chambreRepository.save(chambre);
         }
@@ -69,7 +69,7 @@ public class ChambreService implements IChambreService {
 
     @Override
     public List<Chambre> getChambresParBlocEtType(long idBloc, TypeChambre typeC) {
-        return chambreRepository.findByBlocIdBlocAndTypeChambre(idBloc, typeC);
+        return chambreRepository.findByBlocIdBlocAndTypeChambre(idBloc, typeC);  // This method now exists in the repository
     }
 
     @Override

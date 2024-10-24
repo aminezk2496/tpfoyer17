@@ -11,6 +11,7 @@ public interface IChambreService {
     Chambre addChambre(Chambre c);
     Chambre updateChambre(Chambre c);
     Chambre retrieveChambre(long idChambre);
+
     List<Chambre> findByTypeChambre();
     Bloc affecterChambresABloc(List<Long> numChambre, long idBloc);
     List<Chambre> getChambresParNomUniversite(String nomUniversite);
